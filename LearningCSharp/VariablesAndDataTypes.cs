@@ -85,7 +85,6 @@ namespace LearningCSharp
             GimmeSomething(out int p);
             Assert.Equal(42, p);
 
-
         }
 
         public void DoubleItRef(ref int x)
