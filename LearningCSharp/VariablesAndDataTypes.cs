@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -85,6 +86,45 @@ namespace LearningCSharp
             GimmeSomething(out int p);
             Assert.Equal(42, p);
 
+        }
+
+        [Fact]
+        public void EnumeratingStrings()
+        {
+            // first - the char data type.
+            char mi = 'M'; // a single unicode character (16 bits), 
+            // delimeted by single quotes. Just to drive you typescript people crazy.
+
+            string message = "Call your mom";
+            Assert.Equal('C', message[0]);
+
+            foreach(char c in message)
+            {
+                // you would have each character in sequence here.
+            }
+
+        }
+        [Fact]
+        public void StringsAreImmutable()
+        {
+            // this means you cannot change a string.
+            string myName = "Jeffry";
+            myName += " M. Gonzalez";
+
+            Assert.Equal("Jeffry M. Gonzalez", myName);
+            //string result = "";
+            //foreach(var num in Enumerable.Range(1,1000))
+            //{
+            //    result += num.ToString();
+            //}
+            //Assert.True(result.StartsWith("1234567891011"));
+
+            StringBuilder result = new StringBuilder();
+            foreach(var num in Enumerable.Range(1,1000))
+            {
+                result.Append(num.ToString());
+            }
+            Assert.True(result.ToString().StartsWith("1234567"));
         }
 
         public void DoubleItRef(ref int x)

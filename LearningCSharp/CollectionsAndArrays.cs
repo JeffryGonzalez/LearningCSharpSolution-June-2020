@@ -40,6 +40,7 @@ namespace LearningCSharp
             var favoriteNumbers = new List<int>();
             favoriteNumbers.Add(9);
             favoriteNumbers.Add(10);
+           // favoriteNumbers.Add("tacos");
 
             var firstTwo = favoriteNumbers[0] + favoriteNumbers[1];
             Assert.Equal(19, firstTwo);
@@ -52,6 +53,85 @@ namespace LearningCSharp
         [Fact]
         public void InitializingAndEnumeratingAList()
         {
+            var friends = new List<string>
+            {
+                "Sean",
+                "Amy",
+                "Jessika",
+                "Tim"
+            };
+
+            Assert.Equal("Sean", friends[0]);
+
+            var friendString = "";
+            foreach(string friend in friends)
+            {
+                friendString += friend;
+            }
+            Assert.Equal("SeanAmyJessikaTim", friendString);
+        }
+
+        [Fact]
+        public void UsingADictionary()
+        {
+            var friends = new Dictionary<char, string>();
+            friends.Add('s', "Sean");
+            friends.Add('d', "David");
+            friends.Add('b', "Sean");
+
+            Assert.Equal("David", friends['d']);
+
+
+        }
+
+        [Fact]
+        public void InitializingAndEnumeratingADictionary()
+        {
+            var friends = new Dictionary<char, string>
+            {
+                { 's', "Sean" },
+                { 'd', "David" },
+                { 'b', "Sean" }
+            };
+
+            Assert.Equal("David", friends['d']);
+
+            Assert.True(friends.ContainsKey('d'));
+            Assert.False(friends.ContainsValue("Billy"));
+
+            // enumerating just the keys
+            foreach(char c in friends.Keys)
+            {
+                // you have the key here... 's', 'd', 'b'
+            }
+
+            foreach(string f in friends.Values)
+            {
+                // you have the values here... "Sean", "David", "Sean"
+            }
+
+            foreach(KeyValuePair<char, string> kvp in friends)
+            {
+                // you have the keyvalue pair 
+                // kvp.Key = 's', 'd', 'b'
+                // kvp.Value = "Sean", "David", "Sean"
+            }
+        }
+
+        [Fact]
+        public void ArraysAreCoolButLimited()
+        {
+            string[] friends = new string[] { "Joe", "Bill", "Sue", "Mary" };
+            Assert.Equal("Joe", friends[0]);
+
+            // but you can't add elements to the array. This array will _always_
+            // have four elements in it.
+
+            var luckyNumbers = new int[3];
+            luckyNumbers[0] = 9;
+            luckyNumbers[1] = 20;
+            luckyNumbers[2] = 108;
+            // luckyNumbers[3] = 99;
 
         }
     }
